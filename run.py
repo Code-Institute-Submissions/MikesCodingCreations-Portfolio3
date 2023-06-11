@@ -1,13 +1,16 @@
 import random
 
+
 # Function to display the game board
 def display_board(board):
     size = len(board)
     print("   " + " ".join(chr(65 + i) for i in range(size)))
-    print("  +" + "- " * size + "+")
+    print("  +" + "-+" * size)
     for i in range(size):
-        print(f"{i + 1} |" + " ".join(board[i]) + "|")
-    print("  +" + "- " * size + "+")
+        row_header = str(i + 1) if i != 9 else "10"  # Adjust column headers for row 10
+        print(f"{row_header} |" + "|".join(board[i]) + "|")
+        print("  +" + "-+" * size)
+
 
 # Function to check if all ships are sunk
 def check_game_over(board):
@@ -16,6 +19,8 @@ def check_game_over(board):
             return False
     return True
 
+
+# Function to place player's ships
 # Function to place player's ships
 def place_player_ships(board, num_ships):
     size = len(board)
@@ -23,18 +28,14 @@ def place_player_ships(board, num_ships):
         print(f"\nPlacing Ship {i + 1}")
         while True:
             display_board(board)
-            ship_pos = input("Enter the position for Ship {i + 1} (e.g., A1): ").upper()
+            ship_pos = input(f"Enter the position for Ship {i + 1} (e.g., A1): ").upper()
 
-            if len(ship_pos) != 2 or ship_pos[0] < "A" or ship_pos[0] >= chr(65 + size) or not ship_pos[1:].isdigit():
+            if len(ship_pos) != 2 or ship_pos[0] < "A" or ship_pos[0] >= chr(65 + size) or not ship_pos[1:].isdigit() or int(ship_pos[1:]) > size:
                 print("Invalid input! Please enter a valid position.")
                 continue
 
             col = ord(ship_pos[0]) - ord("A")
             row = int(ship_pos[1:]) - 1
-
-            if not (0 <= row < size) or not (0 <= col < size):
-                print("Invalid input! Please enter a valid position.")
-                continue
 
             if board[row][col] == "S":
                 print("There is already a ship here! Please choose another.")
@@ -42,6 +43,8 @@ def place_player_ships(board, num_ships):
 
             board[row][col] = "S"
             break
+
+
 
 # Function to place computer's ships randomly
 def random_ship_placement(board, num_ships):
@@ -55,6 +58,7 @@ def random_ship_placement(board, num_ships):
         if board[row][col] != "S":
             board[row][col] = "S"
             ships_placed += 1
+
 
 # Function to play the game
 def play_game():
@@ -127,6 +131,7 @@ def play_game():
 
         player_turn = not player_turn
 
+
 # Function to display the starting screen
 def display_starting_screen():
     print("Welcome to Mike's Battleship Game!")
@@ -147,6 +152,7 @@ def display_starting_screen():
         else:
             print("Invalid choice! Please enter a valid option.")
 
+
 # Function to display the game rules
 def display_game_rules():
     print("Game Rules:")
@@ -156,8 +162,9 @@ def display_game_rules():
     print("4. You target a position on the opponent's board.")
     print("5. If your target hits a battleship, it's a hit.")
     print("6. Otherwise, it's a miss.")
-    print("7. The game continues till all battleships of one player are sunk.")
+    print("7. The game continues until all battleships of one player are sunk.")
     print("8. Good luck and have fun!")
+
 
 # Start the game
 display_starting_screen()
