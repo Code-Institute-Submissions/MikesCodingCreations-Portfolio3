@@ -4,70 +4,16 @@ import random
 # Function to display the game board
 def display_board(board):
     size = len(board)
-    print("  " + "   ".join([chr(65 + i) for i in range(size)]))
-    print("  " + "+---" * size + "+")
+    print("   " + " ".join(chr(65 + i) for i in range(size)))
+    print("  +" + "- " * size + "+")
+
     for i in range(size):
-        row = [" " if cell == "S" else cell for cell in board[i]]
-        print(str(i) + " | " + " | ".join(row) + " |")
-        print("  " + "+---" * size + "+")
+        print(f"{i + 1} |" + " ".join(board[i]) + "|")
+    
+    print("  +" + "- " * size + "+")
 
 
-# Function to place a ship on the board
-def place_ship(board, ship, direction, row, col):
-    if direction == "H":
-        for i in range(col, col + ship):
-            board[row][i] = "S"
-    elif direction == "V":
-        for i in range(row, row + ship):
-            board[i][col] = "S"
-
-
-# Function to randomly place ships on the board
-def random_ship_placement(board):
-    size = len(board)
-    ships = [5, 4, 3, 3, 2]
-    for ship in ships:
-        while True:
-            row = random.randint(0, size - 1)
-            col = random.randint(0, size - 1)
-            direction = random.choice(["H", "V"])
-            if validate_ship_placement(board, ship, direction, row, col):
-                place_ship(board, ship, direction, row, col)
-                break
-
-
-# Function to check if a ship placement is valid
-def validate_ship_placement(board, ship, direction, row, col):
-    size = len(board)
-    if direction == "H":
-        if col + ship > size:
-            return False
-        for i in range(col, col + ship):
-            if board[row][i] == "S":
-                return False
-    elif direction == "V":
-        if row + ship > size:
-            return False
-        for i in range(row, row + ship):
-            if board[i][col] == "S":
-                return False
-    return True
-
-
-# Function to check if a shot hit a ship
-def check_hit(board, row, col):
-    return board[row][col] == "S"
-
-
-# Function to update the board after a shot
-def update_board(board, row, col, hit):
-    if hit:
-        board[row][col] = "X"
-    else:
-        board[row][col] = "O"
-
-
-# Function to check if all the ships are sunk
+# Function to check if all ships are sunk
 def check_game_over(board):
     for row in board:
         if "S" in row:
@@ -75,154 +21,158 @@ def check_game_over(board):
     return True
 
 
-# Function to generate the computer's shot
-def generate_computer_shot(board):
+# Function to place player's ships
+def place_player_ships(board, num_ships):
     size = len(board)
-    while True:
-        row = random.randint(0, size - 1)
-        col = random.randint(0, size - 1)
-        if board[row][col] in [" ", "S"]:
-            return row, col
+    
+    for i in range(num_ships):
+        print(f"\nPlacing Ship {i + 1}")
+        while True:
+            display_board(board)
+            ship_pos = input(f"Enter the position for Ship {i + 1} (e.g., A1): ").upper()
 
+            if len(ship_pos) != 2 or ship_pos[0] < "A" or ship_pos[0] >= chr(65 + size) or not ship_pos[1:].isdigit():
+                print("Invalid input! Please enter a valid position.")
+                continue
 
-# Function to handle the player's turn
-def player_turn(computer_board):
-    print("\nPlayer's Turn")
-    while True:
-        shot = input("Enter your shot (e.g., A5): ").upper()
-        size = len(computer_board)
-        if len(shot) != 2 or not shot[0].isalpha() or not shot[1].isdigit():
-            print("Invalid input! Please try again.")
-            continue
-        col = ord(shot[0]) - 65
-        row = int(shot[1])
-        if not (0 <= row < size) or not (0 <= col < size):
-            print("Invalid input! Please try again.")
-            continue
-        if computer_board[row][col] in ["X", "O"]:
-            print("You've already shot there! Please try again.")
-            continue
-        break
-    hit = check_hit(computer_board, row, col)
-    update_board(computer_board, row, col, hit)
-    if hit:
-        print("Congratulations! You hit an enemy ship!")
-    else:
-        print("You missed!")
+            col = ord(ship_pos[0]) - ord("A")
+            row = int(ship_pos[1:]) - 1
 
+            if not (0 <= row < size) or not (0 <= col < size):
+                print("Invalid input! Please enter a valid position.")
+                continue
 
-# Function to handle the computer's turn
-def computer_turn(player_board):
-    print("\nComputer's Turn")
-    size = len(player_board)
-    while True:
-        row = random.randint(0, size - 1)
-        col = random.randint(0, size - 1)
-        if player_board[row][col] in [" ", "S"]:
+            if board[row][col] == "S":
+                print("There is already a ship here! Please choose another.")
+                continue
+
+            board[row][col] = "S"
             break
-    hit = check_hit(player_board, row, col)
-    update_board(player_board, row, col, hit)
-    if hit:
-        print("Oh no! The computer hit one of your ships!")
-    else:
-        print("Phew! The computer missed!")
 
 
-# Function to check if the game is over
-def is_game_over(player_board, computer_board):
-    return check_game_over(player_board) or check_game_over(computer_board)
+# Function to place computer's ships randomly
+def random_ship_placement(board, num_ships):
+    size = len(board)
+    ships_placed = 0
+
+    while ships_placed < num_ships:
+        col = random.randint(0, size - 1)
+        row = random.randint(0, size - 1)
+
+        if board[row][col] != "S":
+            board[row][col] = "S"
+            ships_placed += 1
 
 
 # Function to play the game
-def play_game(size):
-    # Initialize the player and computer boards
+def play_game():
+    size = int(input("Enter the size of the game board (4-10): "))
+    num_ships = int(input("Enter the number of battleships to play with: "))
+    
     player_board = [[" " for _ in range(size)] for _ in range(size)]
     computer_board = [[" " for _ in range(size)] for _ in range(size)]
-
-    # Random ship placement for the player and computer
-    random_ship_placement(player_board)
-    random_ship_placement(computer_board)
-
-    # Game loop
-    while True:
-        display_board(player_board)
-        player_turn(computer_board)
-        if is_game_over(player_board, computer_board):
-            print("Congratulations! You sank all the enemy ships. You win!")
-            break
-        computer_turn(player_board)
-        if is_game_over(player_board, computer_board):
-            print("Oh no! The computer sank all your ships. You lose!")
-            break
-
-
-# Function to display game rules and how to play
-def display_rules():
-    print("=== Battleships Game ===")
-    print("\nRules:")
-    print("1. The game is played on a grid of your chosen size.")
-    print("2. Players has five ships of different lengths: 5, 4, 3, 2, and 1.")
-    print("3. Players guess the location of the opponent's ships in turns.")
-    print("4. The first player to sink all of the opponent's ships wins.")
-    print("\nHow to Play:")
-    print("1. For your turn, enter the location to target (e.g., A5).")
-    print("2. A hit is indicated by 'X', and a miss is indicated by 'O'.")
-    print("3. The computer will automatically take its turn after you.")
-
-
-# Function to select game difficulty
-def select_difficulty():
-    print("\n=== Select Difficulty ===")
-    print("1. Easy")
-    print("2. Medium")
-    print("3. Hard")
+    
+    print("\nPlacing player's battleships...")
+    place_player_ships(player_board, num_ships)
+    
+    print("\nPlacing computer's battleships...")
+    random_ship_placement(computer_board, num_ships)
+    
+    player_turn = True
 
     while True:
-        choice = input("Enter the difficulty level (1-3): ")
-        if choice not in ["1", "2", "3"]:
-            print("Invalid input! Please try again.")
-            continue
-        return int(choice)
+        print("\nPlayer's Turn" if player_turn else "\nComputer's Turn")
+        if player_turn:
+            print("Player Board:")
+            display_board(player_board)
+        else:
+            print("Computer Board:")
+            display_board([[cell if cell != "S" else " " for cell in row] for row in computer_board])
+
+        if player_turn:
+            target_pos = input("Enter the position to attack (e.g., A1), or 'Q' to quit: ").upper()
+
+            if target_pos == "Q":
+                print("\nGame ended by the player. Goodbye!")
+                break
+
+            if len(target_pos) != 2 or target_pos[0] < "A" or target_pos[0] >= chr(65 + size) or not target_pos[1:].isdigit():
+                print("Invalid input! Please enter a valid position.")
+                continue
+
+            col = ord(target_pos[0]) - ord("A")
+            row = int(target_pos[1:]) - 1
+
+            if not (0 <= row < size) or not (0 <= col < size):
+                print("Invalid input! Please enter a valid position.")
+                continue
+
+            if computer_board[row][col] == "X" or computer_board[row][col] == "O":
+                print("You've already attacked here! Please choose another.")
+                continue
+
+            if computer_board[row][col] == "S":
+                print("You hit a battleship!")
+                computer_board[row][col] = "X"
+                if check_game_over(computer_board):
+                    print("\nCongratulations! You won the game!")
+                    break
+            else:
+                print("You missed.")
+                computer_board[row][col] = "O"
+
+        else:
+            target_pos = (random.randint(0, size - 1), random.randint(0, size - 1))
+
+            if player_board[target_pos[0]][target_pos[1]] == "X" or player_board[target_pos[0]][target_pos[1]] == "O":
+                continue
+
+            if player_board[target_pos[0]][target_pos[1]] == "S":
+                print("The computer hit your battleship!")
+                player_board[target_pos[0]][target_pos[1]] = "X"
+                if check_game_over(player_board):
+                    print("\nGame over! The computer won the game.")
+                    break
+            else:
+                print("The computer missed.")
+                player_board[target_pos[0]][target_pos[1]] = "O"
+
+        player_turn = not player_turn
 
 
-# Function to select game grid size
-def select_grid_size():
-    print("\n=== Select Grid Size ===")
-    print("1. 5x5")
-    print("2. 6x6")
-    print("3. 7x7")
-    print("4. 8x8")
-    print("5. 9x9")
-    print("6. 10x10")
-
+# Function to display the starting screen
+def display_starting_screen():
+    print("Welcome to Mike's Battleship Game!")
     while True:
-        choice = input("Enter the grid size (1-6): ")
-        if choice not in ["1", "2", "3", "4", "5", "6"]:
-            print("Invalid input! Please try again.")
-            continue
-        return int(choice) + 4
-
-
-# Function for the main menu
-def main_menu():
-    while True:
-        print("\n=== Battleships Game ===")
-        print("1. Play Game")
-        print("2. Game Rules and How to Play")
-        print("3. Exit")
+        print("\nMenu:")
+        print("1. Game Rules")
+        print("2. Play Game")
+        print("3. Quit")
         choice = input("Enter your choice (1-3): ")
+
         if choice == "1":
-            size = select_grid_size()
-            play_game(size)
+            display_game_rules()
         elif choice == "2":
-            display_rules()
+            play_game()
         elif choice == "3":
-            print("\nThank you for playing Battleships!")
+            print("\nGame ended. Goodbye!")
             break
         else:
-            print("Invalid input! Please try again.")
+            print("Invalid choice! Please enter a valid option.")
 
 
-# Run the main menu
-if __name__ == "__main__":
-    main_menu()
+# Function to display the game rules
+def display_game_rules():
+    print("Game Rules:")
+    print("1. The game board is a grid where you place battleships.")
+    print("2. The goal is to sink all opponent's battleships.")
+    print("3. Each battleship occupies multiple cells either H or V.")
+    print("4. You target a position on the opponent's board.")
+    print("5. If your target hits a battleship, it's a hit.")
+    print("6. Otherwise, it's a miss.")
+    print("7. The game continues till all battleships of one player are sunk.")
+    print("8. Good luck and have fun!")
+
+
+# Start the game
+display_starting_screen()
