@@ -4,8 +4,13 @@
 Mike's Battleship Game is a Python console-based application that recreates the classic game of Battleship. The game allows players to strategically place their battleships on a grid and engage in a battle against the computer. It provides an entertaining and engaging experience for users to test their tactical skills and luck.
 
 ## Mockups of game
+### Starting Page
 ![Mockup of starting page](https://github.com/MikesCodingCreations/Portfolio3/blob/main/assets/main_page1.png)
+
+### Menu Screen
 ![Mockup of menu screen page](https://github.com/MikesCodingCreations/Portfolio3/blob/main/assets/menu_screen1.png)
+
+### Game start
 ![Mockup of player board / game start page](https://github.com/MikesCodingCreations/Portfolio3/blob/main/assets/player_gameboard1.png)
 
 ## Game Rules
