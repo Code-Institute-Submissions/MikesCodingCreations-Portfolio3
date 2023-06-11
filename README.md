@@ -32,7 +32,7 @@ Mike's Battleship Game is a Python console-based application that recreates the 
 
 ## Testing 
 
-* Link works / Can reach deployed site
+### Link works / Can reach deployed site
 - Expetected: 
   - The game should open via the deployed Heroku link
 - Tested by:
@@ -40,7 +40,7 @@ Mike's Battleship Game is a Python console-based application that recreates the 
 - Works? Yes
 - Any known issues? No
 
-* Run Program starts the python game/app
+### Run Program starts the python game/app
 - Expetected: 
   - The game should run / the welcome message and menu options are displayed
 - Tested by:
@@ -48,7 +48,7 @@ Mike's Battleship Game is a Python console-based application that recreates the 
 - Works? Yes
 - Any known issues? No
 
-* Each menu option works
+### Each menu option works
 - Expetected: 
   - Each of the three menu options work
   - Option 1: selecting this should display the menu/rules
@@ -59,7 +59,7 @@ Mike's Battleship Game is a Python console-based application that recreates the 
 - Works? Yes
 - Any known issues? No
 
-* User is able to chose their board size from 4 - 10
+### User is able to chose their board size from 4 - 10
 - Expetected: 
   - User should be able to chose the size of their board from 4x4 upto 10x10
 - Tested by:
@@ -67,7 +67,7 @@ Mike's Battleship Game is a Python console-based application that recreates the 
 - Works? Yes
 - Any known issues? No
 
-* Chose how many ships are being placed/used in the game
+### Chose how many ships are being placed/used in the game
 - Expetected: 
   - User should be able to chose upto 10 ships to place on the board
 - Tested by:
@@ -75,7 +75,7 @@ Mike's Battleship Game is a Python console-based application that recreates the 
 - Works? Yes
 - Any known issues? No
 
-* User has the positbility of loosing or winning
+### User has the positbility of loosing or winning
 - Expetected: 
   - User should be able to play a game of their chosing (board/ship size) and have the posibility of winning or losing depending on their choices
 - Tested by:
@@ -84,7 +84,7 @@ Mike's Battleship Game is a Python console-based application that recreates the 
 - Works? Yes
 - Any known issues? No
 
-* Restart/Quit game
+### Restart/Quit game
 - Expetected: 
   - User should be able quit the game and start a new one.
 - Tested by:
@@ -98,10 +98,10 @@ Identified Bugs
   - No bugs found.
 Solved: N/A
 
-### Unfixed Bugs
+## Unfixed Bugs
 N/A - All known bugs were fixed.
 
-### Validator Testing 
+## Validator Testing 
 
 - PEP 8 Validator
   - No significant bugs or errors found.
@@ -109,7 +109,7 @@ N/A - All known bugs were fixed.
 ## Deployment
 - The site was deployed to Heroku via my GitHub link.
 
-# The live link can be found here:
+## The live link can be found here:
 https://mikes-battleship-game.herokuapp.com/
 
 ## Contributing
