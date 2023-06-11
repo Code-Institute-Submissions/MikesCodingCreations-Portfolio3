@@ -161,7 +161,7 @@ def display_rules():
     print("=== Battleships Game ===")
     print("\nRules:")
     print("1. The game is played on a grid of your chosen size.")
-    print("2. Players has five ships of different lengths: 5, 4, 3, 3, and 2.")
+    print("2. Players has five ships of different lengths: 5, 4, 3, 2, and 1.")
     print("3. Players guess the location of the opponent's ships in turns.")
     print("4. The first player to sink all of the opponent's ships wins.")
     print("\nHow to Play:")
