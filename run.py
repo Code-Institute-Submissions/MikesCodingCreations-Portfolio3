@@ -11,7 +11,7 @@ def get_valid_input(prompt, min_value, max_value):
             else:
                 print(f"Enter a value between {min_value} and {max_value}.")
         except ValueError:
-            print("Invalid input! Please enter a valid number.")
+            print("Invalid input! Please enter a valid number between 4 and 9.")
 
 
 # Function to display the game board
@@ -20,8 +20,8 @@ def display_board(board):
     print("   " + " ".join(chr(65 + i) for i in range(size)))
     print("  +" + "-+" * size)
     for i in range(size):
-        row_header = str(i + 1) if i != 9 else "10"  
-        # Adjust column headers for row 10
+        row_header = str(i + 1) if i != 9 else "9"  
+        # Adjust column headers for row 9
         print(f"{row_header} |" + "|".join(board[i]) + "|")
         print("  +" + "-+" * size)
 
@@ -75,7 +75,7 @@ def random_ship_placement(board, num_ships):
 # Function to play the game
 def play_game():
     min_board_size = 4
-    max_board_size = 10
+    max_board_size = 9
     min_ships = 1
 
     size = get_valid_input(f"Enter the size of the game board ({min_board_size}-{max_board_size}): ", min_board_size, max_board_size)
