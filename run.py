@@ -1,4 +1,5 @@
 import random
+import pyfiglet
 
 
 # Function to validate input for board size and number of ships
@@ -149,9 +150,13 @@ def play_game():
         player_turn = not player_turn
 
 
+ascii_banner = pyfiglet.figlet_format("Welcome to Mike's Battleship Game!")
+
+
 # Function to display the starting screen
 def display_starting_screen():
-    print("Welcome to Mike's Battleship Game!")
+    print("")
+    print(ascii_banner)
     while True:
         print("\nMenu:")
         print("1. Game Rules")
@@ -170,17 +175,24 @@ def display_starting_screen():
             print("Invalid choice! Please enter a valid option.")
 
 
+
 # Function to display the game rules
 def display_game_rules():
+    print("")
     print("Game Rules:")
     print("1. The game board is a grid where you place battleships.")
     print("2. The goal is to sink all opponent's battleships.")
-    print("3. Each battleship occupies multiple cells either H or V.")
+    print("3. Each battleship occupies cells either Horizontal or Vertical.")
     print("4. You target a position on the opponent's board.")
     print("5. If your target hits a battleship, it's a hit.")
     print("6. Otherwise, it's a miss.")
     print("7. Game continues until all battleships of one player are sunk.")
-    print("8. Good luck and have fun!")
+    print("8. To begin, select option 2.")
+    print("9. You must then chose a grid size between 4 and 9.")
+    print("10. Then you may choose between 1 and 9 ships to play with")
+    print("11. You can then begin attacking the oponents ships i.e. A1 etc.")
+    print("12. You may quit the game by typing Q.")
+    print("13. Good luck and have fun!")
 
 
 # Start the game

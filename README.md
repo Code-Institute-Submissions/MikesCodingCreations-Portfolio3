@@ -103,7 +103,7 @@
 - Expetected: 
   - User should be able to play a game of their chosing (board/ship size) and have the posibility of winning or losing depending on their choices of where they place the ships.
 - Tested by:
-  - Tried on a small (4x4) and large (9x9) board.
+  - Tried on a small (4x4) and large (9x9) board and all sizes inbetween.
   - User is able to successfully play a game and either win or loose depending on their choices.
 - Works:
   - Successfully works depending on choises.
@@ -167,6 +167,7 @@ The site was deployed firstly via GitHub pages then also through Heroku using th
 ## Content
 - All content was created by the developer.
 - Information on README example found [here.](https://github.com/Code-Institute-Solutions/SampleREADME/blob/master/README.md)
+- ASCII Art text how-to found [here.](https://www.devdungeon.com/content/create-ascii-art-text-banners-python)
 
 ## Media
 - All images are ownder and created by the developer.
