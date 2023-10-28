@@ -7,6 +7,7 @@
 
 ## Technologies Used
 - Python
+- JavaScript
 
 ## Mockups of game
 ### Starting Page
@@ -45,7 +46,7 @@
 - Expetected: 
   - The game should open via the deployed Heroku link.
 - Tested by:
-  - Visiting the deployed Heroki link: https://mikes-battleship-game.herokuapp.com/
+  - [Visiting the deployed Heroki link](https://mikes-battleship-game.herokuapp.com/)
 - Works:
   - Yes, the user can access the app through the link with no issues.
 - Any known issues:
@@ -146,12 +147,32 @@ The site was deployed firstly via GitHub pages then also through Heroku using th
   1. Login to GitHub and locate the [Repositoy](https://github.com/MikesCodingCreations/Portfolio3)
   2. At the top of the Repository, click on the 'Settings' button.
       - Alternatively click [HERE](https://github.com/MikesCodingCreations/Portfolio3/settings) to access this step.
-  3. Scroll down the page and click on the 'GitHub Pages' section which is located on the left hand side
+  3. Scroll down the page and click on the 'GitHub Pages' section which is located on the left hand side.
+  4. Change 'None' to 'Master Branch' under the 'source' option.
+  5. Allow the page time to refresh.
+  6. Scroll all the way down and click on the published site link found in the 'GutHub pages' section.
 
-- Heroku  
+- Heroku
+  1. Navigate to [Heroku.](www.heroku.com)
+  2. Login or create an account.
+  3. Click the 'New' icon on the right hand side.
+  4. Click 'create new app' in the dropdown.
+  5. Create a unique app name and change region to Europe. Click on purple 'Create App' icon.
+  6. In the 'Deployment method' click 'Connect to GitHub'.
+  7. In the 'search for a repository to connect to' section, type in your repo-name and hit search. Hit search then click connect.
+  8. Scholl down to the 'manual deploy' and hit 'diploy branch'
+  9. After a few moments, you may scroll up and click the 'open app' button which will redirect you to the deployed app link.
 
-## The live link can be found here:
-https://mikes-battleship-game.herokuapp.com/
+
+## Content
+- All content was created by the developer.
+- Information on README example found [here.](https://github.com/Code-Institute-Solutions/SampleREADME/blob/master/README.md)
+
+## Media
+- All images are ownder and created by the developer.
+
+## Acknowledgements
+- Tutor support at Code Institute for their continued support.
 
 ## Contributing
 Contributions to Mike's Battleship Game are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request on the GitHub repository.
