@@ -36,9 +36,7 @@
 ## Usage
 1. Open a terminal or command prompt
 2. Navigate to the directory where the game files are located
-3. Run the following command to start the game:
-   ```shell
-   python run.py
+3. Run the following command to start the gameusing the command: python run.py
 
 ## Testing 
 - PEP8 validator service was used to validate the Python app to ensure it complies PEP8 style conventions.
@@ -49,7 +47,7 @@
 - Tested by:
   - Visiting the deployed Heroki link: https://mikes-battleship-game.herokuapp.com/
 - Works:
-  - Yes, you can access the app through the link with no issues.
+  - Yes, the user can access the app through the link with no issues.
 - Any known issues:
   - No. The app runs via the link.
 
@@ -57,70 +55,100 @@
 - Expetected: 
   - The game should run / the welcome message and menu options should be displayed to the user.
 - Tested by:
-  - Clicking on the 'run program' button. Reviewing all necessary content is showing
-- Works? Yes
-- Any known issues? No
+  - Clicking on the 'run program' button when the app opens in browser. Reviewing all necessary content is showing.
+- Works:
+  - Yes. The 'run program' button executes and the app runs. All necessary content is displayed to the user.
+- Any known issues:
+  - No. All content is clear and no information is missing.
 
 ### Each menu option works
-- Expetected: 
-  - Each of the three menu options work
+- Expetected:
+  - All three menu options are displayed and user can choose either one.
   - Option 1: selecting this should display the menu/rules
   - Option 2: selecting this should start the game
-  - Option 3: selecting this should allow you to quit the game
+  - Option 3: selecting this should allow the user to quit the game
 - Tested by:
-  - Selecting each of the options 1, 2 and 3. The menu displays, the game starts and the game quits
-- Works? Yes
-- Any known issues? No
+  - Selecting each of the options 1, 2 and 3. The menu displays, the game starts and the game quits upon execution of each option.
+- Works:
+  - Yes, all the above options work for the end user.
+- Any known issues:
+  - No known issues with this testing.
 
-### User is able to chose their board size from 4 - 10
+### User is able to chose their board size from 4 - 9
 - Expetected: 
-  - User should be able to chose the size of their board from 4x4 upto 10x10
+  - User should be able to chose the size of their board from 4x4 up to 9x9
+  - User should not be able to choose a board with fewer than 4 or more than 9 spaces.
 - Tested by:
-  - Selected each option, 4x4, 5x5 etc up to 10x10
-- Works? Yes
-- Any known issues? No
+  - Selected each option, 4x4, 5x5 etc up to 9x9
+  - Trying to enter a null result (i.e., hitting enter when promted to choose board size, not entering a size) or entering a size < 4 or > 9.
+- Works:
+  - The user is now able to start the game ONLY if the board size is between 4 and 9 grids. 
+  - The user is promted with a message to choose an appropriate size board if entering null, <4 or > 9 grid spaces.
+- Any known issues:
+  - Previously, users were able to start the game by entering <4 or > 9 spaces. However this has now been altered.
+  - No knows issues currently. 
 
 ### Chose how many ships are being placed/used in the game
 - Expetected: 
-  - User should be able to chose upto 10 ships to place on the board
+  - User should be able to chose up to 9 ships to place on the board.
 - Tested by:
-  - Chosing where each ship goes on the board. Tried placing less ships, does not work. Tried placing more ships also does not work. Right number of ships can be placed when selected.
-- Works? Yes
-- Any known issues? No
+  - Trying to select > 9 or < 1 ship. This results in a prompt to the user to choose appropriate ships.
+- Works:
+  - Yes, this piece of testing now works. Users can successfully begin the app when choosing appropriate number of ships.
+- Any known issues:
+  - Previously users could choose any amount of ships which would not run the app accordingly. The code has now been altered to ensure users cannot continue to begin the game if their chosen ship size is not between 4 and 9
 
 ### User has the positbility of loosing or winning
 - Expetected: 
-  - User should be able to play a game of their chosing (board/ship size) and have the posibility of winning or losing depending on their choices
+  - User should be able to play a game of their chosing (board/ship size) and have the posibility of winning or losing depending on their choices of where they place the ships.
 - Tested by:
-  - Tried on a small (4x4) and large (10x10) board
-  - User is able to successfully play a game and either win or loose depending on their choices
-- Works? Yes
-- Any known issues? No
+  - Tried on a small (4x4) and large (9x9) board.
+  - User is able to successfully play a game and either win or loose depending on their choices.
+- Works:
+  - Successfully works depending on choises.
+  - User may win or loose VS the computer.
+- Any known issues:
+  - No current known issues found.
 
 ### Restart/Quit game
 - Expetected: 
   - User should be able quit the game and start a new one.
 - Tested by:
-  - Q is typed and the game is quit.
-- Works? Yes
-- Any known issues? No
+  - Q is typed and the game able to quit.
+- Works:
+  - Yes. This option is allowed. First on the menu options users may choose option 3 to quite. Then also when the game beging users may choose to type 'Q' to quit.
+- Any known issues:
+  - No current known issues.
+
+
+### Further Testing
+- The app was tested on Google Chrome, Internet Explorer, Microsoft Edge and Safari browsers.
+- Friends & family were asked to review the site and README to point out any bugs and/or user experience issues.
+- Feedback from tutor support and Assessment team taken onboard. 
 
 ## Bugs
 Identified Bugs
-- Blank input or too small/large input (i.e. board piece <4 or > 10) cause game to crash
-
+- Blank input (i.e., null choice or 0) or too small/large input (i.e. board piece <4 or > 9) causes game to crash / not function propertly. 
+- This bug has now been fixed by implmenting a 'get_valid_input' user validation. This code now only allows users to begin the game if they choose the correct grid/ship size (between 4 and 9).
 
 ## Unfixed Bugs
-N/A - All known bugs were fixed.
+- No known, unfixed bugs.
+- Currently users can quite the game at 2 stages: (1) At the menu stage and (2) when the first ship is placed/sunk. However, this could be further improved by adding code to allow user to quit the game before a ship is sunk/placed.
 
 ## Validator Testing 
-
 - PEP 8 Validator
-  - No significant bugs or errors found.
+  - No significant bugs or errors found. Code runs within PEP8 styling conventions.
+  - 1 Improvement could be to reduce length size of certain lines.
 
 ## Deployment
-- The site was deployed to Heroku via my GitHub link.
-  - 
+The site was deployed firstly via GitHub pages then also through Heroku using the following steps:
+- GitHub
+  1. Login to GitHub and locate the [Repositoy](https://github.com/MikesCodingCreations/Portfolio3)
+  2. At the top of the Repository, click on the 'Settings' button.
+      - Alternatively click [HERE](https://github.com/MikesCodingCreations/Portfolio3/settings) to access this step.
+  3. Scroll down the page and click on the 'GitHub Pages' section which is located on the left hand side
+
+- Heroku  
 
 ## The live link can be found here:
 https://mikes-battleship-game.herokuapp.com/
