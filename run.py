@@ -8,7 +8,7 @@ def get_valid_input(prompt, min_value, max_value):
             if min_value <= value <= max_value:
                 return value
             else:
-                print(f"Please enter a value between {min_value} and {max_value}.")
+                print(f"Enter a value between {min_value} and {max_value}.")
         except ValueError:
             print("Invalid input! Please enter a valid number.")
 
@@ -18,7 +18,8 @@ def display_board(board):
     print("   " + " ".join(chr(65 + i) for i in range(size)))
     print("  +" + "-+" * size)
     for i in range(size):
-        row_header = str(i + 1) if i != 9 else "10"  # Adjust column headers for row 10
+        row_header = str(i + 1) if i != 9 else "10"  
+        # Adjust column headers for row 10
         print(f"{row_header} |" + "|".join(board[i]) + "|")
         print("  +" + "-+" * size)
 
@@ -36,7 +37,7 @@ def place_player_ships(board, num_ships):
         print(f"\nPlacing Ship {i + 1}")
         while True:
             display_board(board)
-            ship_pos = input(f"Enter the position for Ship {i + 1} (e.g., A1): ").upper()
+            ship_pos = input(f"Enter position for Ship {i + 1} (e.g., A1): ").upper()
 
             if len(ship_pos) != 2 or ship_pos[0] < "A" or ship_pos[0] >= chr(65 + size) or not ship_pos[1:].isdigit() or int(ship_pos[1:]) > size:
                 print("Invalid input! Please enter a valid position.")
@@ -141,6 +142,7 @@ def play_game():
 
         player_turn = not player_turn
 
+
 # Function to display the starting screen
 def display_starting_screen():
     print("Welcome to Mike's Battleship Game!")
@@ -170,7 +172,7 @@ def display_game_rules():
     print("4. You target a position on the opponent's board.")
     print("5. If your target hits a battleship, it's a hit.")
     print("6. Otherwise, it's a miss.")
-    print("7. The game continues until all battleships of one player are sunk.")
+    print("7. Game continues until all battleships of one player are sunk.")
     print("8. Good luck and have fun!")
 
 
