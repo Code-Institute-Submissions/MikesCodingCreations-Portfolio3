@@ -1,5 +1,6 @@
 import random
 
+
 # Function to validate input for board size and number of ships
 def get_valid_input(prompt, min_value, max_value):
     while True:
@@ -12,6 +13,7 @@ def get_valid_input(prompt, min_value, max_value):
         except ValueError:
             print("Invalid input! Please enter a valid number.")
 
+
 # Function to display the game board
 def display_board(board):
     size = len(board)
@@ -23,12 +25,14 @@ def display_board(board):
         print(f"{row_header} |" + "|".join(board[i]) + "|")
         print("  +" + "-+" * size)
 
+
 # Function to check if all ships are sunk
 def check_game_over(board):
     for row in board:
         if "S" in row:
             return False
     return True
+
 
 # Function to place player's ships
 def place_player_ships(board, num_ships):
@@ -53,6 +57,7 @@ def place_player_ships(board, num_ships):
             board[row][col] = "S"
             break
 
+
 # Function to place computer's ships randomly
 def random_ship_placement(board, num_ships):
     size = len(board)
@@ -65,6 +70,7 @@ def random_ship_placement(board, num_ships):
         if board[row][col] != "S":
             board[row][col] = "S"
             ships_placed += 1
+
 
 # Function to play the game
 def play_game():
@@ -162,6 +168,7 @@ def display_starting_screen():
             break
         else:
             print("Invalid choice! Please enter a valid option.")
+
 
 # Function to display the game rules
 def display_game_rules():

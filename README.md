@@ -1,7 +1,12 @@
 # Mike's Battleship Game
 
+[View the live project here.](https://mikes-battleship-game.herokuapp.com)
+
 ## Introduction
-Mike's Battleship Game is a Python console-based application that recreates the classic game of Battleship. The game allows players to strategically place their battleships on a grid and engage in a battle against the computer. It provides an entertaining and engaging experience for users to test their tactical skills and luck.
+- Mike's Battleship Game is a Python console-based application that recreates the classic game of Battleship. The game allows players to strategically place their battleships on a grid and engage in a battle against the computer. It provides an entertaining and engaging experience for users to test their tactical skills and luck.
+
+## Technologies Used
+- Python
 
 ## Mockups of game
 ### Starting Page
@@ -36,18 +41,21 @@ Mike's Battleship Game is a Python console-based application that recreates the 
    python run.py
 
 ## Testing 
+- PEP8 validator service was used to validate the Python app to ensure it complies PEP8 style conventions.
 
 ### Link works / Can reach deployed site
 - Expetected: 
-  - The game should open via the deployed Heroku link
+  - The game should open via the deployed Heroku link.
 - Tested by:
-  - Clicking on the deployed link: https://mikes-battleship-game.herokuapp.com/
-- Works? Yes
-- Any known issues? No
+  - Visiting the deployed Heroki link: https://mikes-battleship-game.herokuapp.com/
+- Works:
+  - Yes, you can access the app through the link with no issues.
+- Any known issues:
+  - No. The app runs via the link.
 
 ### Run Program starts the python game/app
 - Expetected: 
-  - The game should run / the welcome message and menu options are displayed
+  - The game should run / the welcome message and menu options should be displayed to the user.
 - Tested by:
   - Clicking on the 'run program' button. Reviewing all necessary content is showing
 - Works? Yes
@@ -99,9 +107,8 @@ Mike's Battleship Game is a Python console-based application that recreates the 
 
 ## Bugs
 Identified Bugs
-- N/A
-  - No bugs found.
-Solved: N/A
+- Blank input or too small/large input (i.e. board piece <4 or > 10) cause game to crash
+
 
 ## Unfixed Bugs
 N/A - All known bugs were fixed.
@@ -113,6 +120,7 @@ N/A - All known bugs were fixed.
 
 ## Deployment
 - The site was deployed to Heroku via my GitHub link.
+  - 
 
 ## The live link can be found here:
 https://mikes-battleship-game.herokuapp.com/
